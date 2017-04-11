@@ -5,8 +5,14 @@ oses:
 - SLES
 - OpenSUSE
 %>
+<%
+  http_proxy_enabled = @host.params['http-proxy'] ? true : false
+  http_proxy = @host.params['http-proxy']
+  http_proxy_port = @host.params['http-proxy-port']
+-%>
+
 DEFAULT linux
 
 LABEL linux
     KERNEL <%= @kernel %>
-    APPEND initrd=<%= @initrd %> ramdisk_size=65536 install=<%= @mediapath %> autoyast=<%= foreman_url('provision') %> textmode=1
+    APPEND initrd=<%= @initrd %> ramdisk_size=65536 install=<%= @mediapath %> autoyast=<%= foreman_url('provision') %> textmode=1 <% if http_proxy_enabled -%>proxy=<%= http_proxy -%>:<%= http_proxy_port -%><% end -%>
