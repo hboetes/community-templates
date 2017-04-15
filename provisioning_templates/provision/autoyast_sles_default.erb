@@ -55,8 +55,8 @@ oses:
     <interfaces config:type="list">
 <%
   @host.managed_interfaces.each do |interface|
-  next if !interface.managed? || interface.subnet.nil? || interface.ip.nil?
-  dhcp = interface.subnet.dhcp_boot_mode?
+    next if !interface.managed? || interface.subnet.nil? || interface.ip.nil?
+    dhcp = interface.subnet.dhcp_boot_mode?
 -%>
 <% if dhcp -%>
       <interface>
