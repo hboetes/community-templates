@@ -5,7 +5,7 @@ oses:
 - SLES
 - OpenSUSE
 %>
-<% http_proxy_string = @host.params['http-proxy'] ? "proxy=" + @host.params['http-proxy'] + ":" + @host.params['http-proxy-port'] : '' -%>
+<% http_proxy_string = @host.params['http-proxy'] ? "proxy=http://" + @host.params['http-proxy'] + ":" + @host.params['http-proxy-port'] : '' -%>
 
 DEFAULT linux
 
