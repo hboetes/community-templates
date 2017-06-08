@@ -21,7 +21,7 @@ d-i keyboard-configuration/xkb-keymap seen true
 d-i console-keymaps-at/keymap seen true
 <% end -%>
 
-<% subnet = @host.subnet -%>
+<% subnet = @host.provision_interface -%>
 <% if subnet.respond_to?(:dhcp_boot_mode?) -%>
   <% dhcp = subnet.dhcp_boot_mode? && !@static -%>
 <% else -%>
